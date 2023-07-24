@@ -24,13 +24,14 @@ library User {
   /** Get the table's schema */
   function getSchema() internal pure returns (Schema) {
     SchemaType[] memory _schema = new SchemaType[](1);
-    _schema[0] = SchemaType.BYTES32;
+    _schema[0] = SchemaType.BOOL;
 
     return SchemaLib.encode(_schema);
   }
 
   function getKeySchema() internal pure returns (Schema) {
-    SchemaType[] memory _schema = new SchemaType[](0);
+    SchemaType[] memory _schema = new SchemaType[](1);
+    _schema[0] = SchemaType.BYTES32;
 
     return SchemaLib.encode(_schema);
   }
@@ -65,56 +66,69 @@ library User {
   }
 
   /** Get value */
-  function get() internal view returns (bytes32 value) {
-    bytes32[] memory _keyTuple = new bytes32[](0);
+  function get(bytes32 key) internal view returns (bool value) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = key;
 
     bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 0);
-    return (Bytes.slice32(_blob, 0));
+    return (_toBool(uint8(Bytes.slice1(_blob, 0))));
   }
 
   /** Get value (using the specified store) */
-  function get(IStore _store) internal view returns (bytes32 value) {
-    bytes32[] memory _keyTuple = new bytes32[](0);
+  function get(IStore _store, bytes32 key) internal view returns (bool value) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = key;
 
     bytes memory _blob = _store.getField(_tableId, _keyTuple, 0);
-    return (Bytes.slice32(_blob, 0));
+    return (_toBool(uint8(Bytes.slice1(_blob, 0))));
   }
 
   /** Set value */
-  function set(bytes32 value) internal {
-    bytes32[] memory _keyTuple = new bytes32[](0);
+  function set(bytes32 key, bool value) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = key;
 
     StoreSwitch.setField(_tableId, _keyTuple, 0, abi.encodePacked((value)));
   }
 
   /** Set value (using the specified store) */
-  function set(IStore _store, bytes32 value) internal {
-    bytes32[] memory _keyTuple = new bytes32[](0);
+  function set(IStore _store, bytes32 key, bool value) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = key;
 
     _store.setField(_tableId, _keyTuple, 0, abi.encodePacked((value)));
   }
 
   /** Tightly pack full data using this table's schema */
-  function encode(bytes32 value) internal view returns (bytes memory) {
+  function encode(bool value) internal view returns (bytes memory) {
     return abi.encodePacked(value);
   }
 
   /** Encode keys as a bytes32 array using this table's schema */
-  function encodeKeyTuple() internal pure returns (bytes32[] memory _keyTuple) {
-    _keyTuple = new bytes32[](0);
+  function encodeKeyTuple(bytes32 key) internal pure returns (bytes32[] memory _keyTuple) {
+    _keyTuple = new bytes32[](1);
+    _keyTuple[0] = key;
   }
 
   /* Delete all data for given keys */
-  function deleteRecord() internal {
-    bytes32[] memory _keyTuple = new bytes32[](0);
+  function deleteRecord(bytes32 key) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = key;
 
     StoreSwitch.deleteRecord(_tableId, _keyTuple);
   }
 
   /* Delete all data for given keys (using the specified store) */
-  function deleteRecord(IStore _store) internal {
-    bytes32[] memory _keyTuple = new bytes32[](0);
+  function deleteRecord(IStore _store, bytes32 key) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = key;
 
     _store.deleteRecord(_tableId, _keyTuple);
+  }
+}
+
+function _toBool(uint8 value) pure returns (bool result) {
+  assembly {
+    result := value
   }
 }

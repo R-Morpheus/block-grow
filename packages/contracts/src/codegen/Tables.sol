@@ -5,10 +5,12 @@ pragma solidity >=0.8.0;
 
 import { Counter, CounterTableId } from "./tables/Counter.sol";
 import { User, UserTableId } from "./tables/User.sol";
+import { Balance, BalanceTableId } from "./tables/Balance.sol";
 import { Blockchain, BlockchainTableId } from "./tables/Blockchain.sol";
 import { Block, BlockTableId } from "./tables/Block.sol";
 import { Transaction, TransactionTableId } from "./tables/Transaction.sol";
 import { CryptoCurrency, CryptoCurrencyTableId } from "./tables/CryptoCurrency.sol";
+import { Portfolio, PortfolioTableId } from "./tables/Portfolio.sol";
 import { MiningEquipment, MiningEquipmentTableId } from "./tables/MiningEquipment.sol";
 import { Market, MarketTableId } from "./tables/Market.sol";
 import { Event, EventTableId } from "./tables/Event.sol";

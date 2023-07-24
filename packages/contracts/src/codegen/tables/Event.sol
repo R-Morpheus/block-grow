@@ -24,7 +24,7 @@ library Event {
   /** Get the table's schema */
   function getSchema() internal pure returns (Schema) {
     SchemaType[] memory _schema = new SchemaType[](1);
-    _schema[0] = SchemaType.BYTES32;
+    _schema[0] = SchemaType.UINT48;
 
     return SchemaLib.encode(_schema);
   }
@@ -65,37 +65,37 @@ library Event {
   }
 
   /** Get value */
-  function get() internal view returns (bytes32 value) {
+  function get() internal view returns (uint48 value) {
     bytes32[] memory _keyTuple = new bytes32[](0);
 
     bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 0);
-    return (Bytes.slice32(_blob, 0));
+    return (uint48(Bytes.slice6(_blob, 0)));
   }
 
   /** Get value (using the specified store) */
-  function get(IStore _store) internal view returns (bytes32 value) {
+  function get(IStore _store) internal view returns (uint48 value) {
     bytes32[] memory _keyTuple = new bytes32[](0);
 
     bytes memory _blob = _store.getField(_tableId, _keyTuple, 0);
-    return (Bytes.slice32(_blob, 0));
+    return (uint48(Bytes.slice6(_blob, 0)));
   }
 
   /** Set value */
-  function set(bytes32 value) internal {
+  function set(uint48 value) internal {
     bytes32[] memory _keyTuple = new bytes32[](0);
 
     StoreSwitch.setField(_tableId, _keyTuple, 0, abi.encodePacked((value)));
   }
 
   /** Set value (using the specified store) */
-  function set(IStore _store, bytes32 value) internal {
+  function set(IStore _store, uint48 value) internal {
     bytes32[] memory _keyTuple = new bytes32[](0);
 
     _store.setField(_tableId, _keyTuple, 0, abi.encodePacked((value)));
   }
 
   /** Tightly pack full data using this table's schema */
-  function encode(bytes32 value) internal view returns (bytes memory) {
+  function encode(uint48 value) internal view returns (bytes memory) {
     return abi.encodePacked(value);
   }
 
