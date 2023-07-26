@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+*{
+    font-family: 'Silkscreen', cursive;
+
+}
+h1{
+    font-family: 'Goblin One', cursive;
+}
+
+/*font-family: 'Courier Prime', monospace;*/
+/*font-family: 'Goblin One', cursive;*/
+/*font-family: 'Silkscreen', cursive;*/
+/*font-family: 'Tektur', cursive;*/
