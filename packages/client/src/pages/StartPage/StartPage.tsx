@@ -3,7 +3,7 @@ import Header from "./Header";
 
 const StartPage = () => {
   return (
-    <div>
+    <div className='w-full h-full'>
       <Header/>
     </div>
   );
