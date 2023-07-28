@@ -13,8 +13,8 @@ const Trail: React.FC<{ open: boolean, children?: any }> = ({ open, children }) 
   return (
     <div>
       {trail.map(({ height, ...style }, index) => (
-        <a.div key={index} style={style}>
-          <a.div style={{ height }}>{items[index]}</a.div>
+        <a.div key={index} style={style} className='border-box'>
+          <a.div className='border-box'>{items[index]}</a.div>
         </a.div>
       ))}
     </div>
@@ -24,7 +24,7 @@ const Trail: React.FC<{ open: boolean, children?: any }> = ({ open, children }) 
 export default function MyTrail({children}:{children: ReactNode}) {
   const [open, set] = useState(true)
   return (
-    <div onClick={() => set(state => !state)}>
+    <div onClick={() => set(state => !state)} className='box-border h-full flex items-center'>
       <Trail open={open}>
           {children}
       </Trail>

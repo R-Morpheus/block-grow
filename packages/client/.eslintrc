@@ -1,7 +1,28 @@
 {
-  "extends": ["../../.eslintrc", "plugin:react/recommended", "plugin:react-hooks/recommended"],
-  "plugins": ["react", "react-hooks"],
+  "extends": [
+    "../../.eslintrc",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "import"
+  ],
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "import/no-unresolved": [2, { "ignore": ["@react-three/drei"] }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }

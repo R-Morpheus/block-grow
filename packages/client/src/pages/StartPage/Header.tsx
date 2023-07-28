@@ -1,5 +1,6 @@
 import React from 'react';
 import MyTrail from "./MyTrail";
+import AnimationComponent from "./AnimationComponent";
 
 
 const Header = () => {
@@ -15,11 +16,12 @@ const Header = () => {
           <a className='mx-2 cursor-pointer'>Contact</a>
         </div>
       </div>
-      <div className='border-white border p-10 w-2/3 h-1/3 flex justify-center items-center rounded-2xl'>
+      <header className='border-white border p-10 w-2/3 h-1/3 flex justify-center items-center rounded-2xl'>
         <MyTrail>
-          <h1 className='text-[180px]'>Grow</h1>
+          <h1 className='text-[200px]'>GROW</h1>
         </MyTrail>
-      </div>
+      </header>
+
     </div>
   );
 };
