@@ -1,7 +1,6 @@
 import React from 'react';
 import MyTrail from "./MyTrail";
-import AnimationComponent from "./AnimationComponent";
-
+import Images from "./Images";
 
 const Header = () => {
   return (
@@ -18,10 +17,10 @@ const Header = () => {
       </div>
       <header className='border-white border p-10 w-2/3 h-1/3 flex justify-center items-center rounded-2xl'>
         <MyTrail>
-          <h1 className='text-[200px]'>GROW</h1>
+          <h1 className='text-[240px]'>GROW</h1>
         </MyTrail>
       </header>
-
+      <Images/>
     </div>
   );
 };
