@@ -21,6 +21,18 @@ export default mudConfig({
       keySchema: {},
       schema: "uint32",
     },
+    StartTime:{
+      ...entityKey,
+      schema: 'uint256'
+    },
+    CloseTime:{
+      ...entityKey,
+      schema: 'uint256'
+    },
+    BaseTime:{
+      ...entityKey,
+      schema: 'uint256'
+    },
     User:{
       ...entityKey,
       schema: "bool",
@@ -52,6 +64,14 @@ export default mudConfig({
     MiningEquipment:{
       ...entityKey,
       schema: EntityId,
+    },
+    MiningLevel:{
+      ...entityKey,
+      schema: 'uint8',
+    },
+    MiningWork:{
+      ...entityKey,
+      schema: 'bool',
     },
     Market:{
       ...entityKey,
