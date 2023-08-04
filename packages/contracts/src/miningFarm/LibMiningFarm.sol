@@ -9,26 +9,26 @@ library LibMiningFarm {
     error LibMiningFarm__FarmAlreadyFinish(bytes32 farmEntity);
     error LibMiningFarm__InvalidLevel(bytes32 farmEntity);
 
-    function startFarm(bytes32 farmEntity, bytes32 userEntity) internal {
+    function startFarm(bytes32 farmEntity) internal {
         if (MiningWork.get(farmEntity) == true){
             revert LibMiningFarm__FarmAlreadyUse(farmEntity);
         }
-        LibTime.getStartTime(userEntity);
+        LibTime.startTime(farmEntity);
         MiningWork.set(farmEntity, true);
     }
 
-    function upgradeFarm(bytes32 farmEntity, uint8 level) internal{
+    function upgradeFarm(bytes32 farmEntity, uint8 level) internal {
         if (MiningLevel.get(farmEntity) == level){
             revert LibMiningFarm__InvalidLevel(farmEntity);
         }
         MiningLevel.set(farmEntity, level);
     }
 
-    function finishFarm(bytes32 farmEntity, bytes32 userEntity) internal{
+    function finishFarm(bytes32 farmEntity) internal {
         if (MiningWork.get(farmEntity) == false){
             revert LibMiningFarm__FarmAlreadyFinish(farmEntity);
         }
-        LibTime.getCloseTime(userEntity);
+        LibTime.closeTime(farmEntity);
         MiningWork.set(farmEntity, false);
     }
 }

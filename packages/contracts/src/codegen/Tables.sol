@@ -13,7 +13,6 @@ import { Blockchain, BlockchainTableId } from "./tables/Blockchain.sol";
 import { Block, BlockTableId } from "./tables/Block.sol";
 import { Transaction, TransactionTableId } from "./tables/Transaction.sol";
 import { CryptoCurrency, CryptoCurrencyTableId } from "./tables/CryptoCurrency.sol";
-import { Portfolio, PortfolioTableId } from "./tables/Portfolio.sol";
 import { MiningEquipment, MiningEquipmentTableId } from "./tables/MiningEquipment.sol";
 import { MiningLevel, MiningLevelTableId } from "./tables/MiningLevel.sol";
 import { MiningWork, MiningWorkTableId } from "./tables/MiningWork.sol";

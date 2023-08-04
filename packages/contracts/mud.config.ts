@@ -1,19 +1,20 @@
-import { mudConfig } from "@latticexyz/world/register";
+import { mudConfig, resolveTableId } from "@latticexyz/world/register";
 
 const EntityId = "bytes32" as const
 const EntityIdArray = "bytes32[]" as const
 const EntityIdSet = "bytes32[]" as const
 
 const entityKey = {
-  primaryKeys: {
+  keySchema: {
     entity: EntityId,
   },
-} as const
+} as const;
 
 const entityRelation = {
   ...entityKey,
   schema: EntityId,
-} as const
+} as const;
+
 
 export default mudConfig({
   tables: {
@@ -23,7 +24,7 @@ export default mudConfig({
     },
     StartTime:{
       ...entityKey,
-      schema: 'uint256'
+      schema: "uint256",
     },
     CloseTime:{
       ...entityKey,
@@ -57,10 +58,6 @@ export default mudConfig({
       keySchema: {},
       schema: "uint256",
     },
-    Portfolio: {
-      ...entityKey,
-      schema: EntityIdArray,
-    },
     MiningEquipment:{
       ...entityKey,
       schema: EntityId,
@@ -82,4 +79,16 @@ export default mudConfig({
       schema: 'uint48',
     },
   },
+  modules: [
+    {
+      name: "KeysInTableModule",
+      root: true,
+      args: [resolveTableId("StartTime")],
+    },
+    {
+      name: "UniqueEntityModule",
+      root: true,
+      args: [],
+    },
+  ],
 });

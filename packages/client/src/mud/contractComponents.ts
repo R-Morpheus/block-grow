@@ -155,21 +155,6 @@ export function defineContractComponents(world: World) {
         }
       );
     })(),
-    Portfolio: (() => {
-      const tableId = new TableId("", "Portfolio");
-      return defineComponent(
-        world,
-        {
-          value: RecsType.StringArray,
-        },
-        {
-          metadata: {
-            contractId: tableId.toHex(),
-            tableId: tableId.toString(),
-          },
-        }
-      );
-    })(),
     MiningEquipment: (() => {
       const tableId = new TableId("", "MiningEquipment");
       return defineComponent(

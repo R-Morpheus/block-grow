@@ -4,23 +4,20 @@ pragma solidity >=0.8.0;
 import { StartTime, CloseTime, BaseTime } from "../codegen/Tables.sol";
 
 library LibTime {
-    function getStartTime(bytes32 userEntity) internal returns (uint256 startTime) {
-        StartTime.set(userEntity, block.timestamp);
-        startTime = StartTime.get(userEntity);
-        return startTime;
+    function startTime(bytes32 farmEntity) internal {
+      uint256 startTime = block.timestamp;
+      StartTime.set(farmEntity, startTime);
     }
 
-    function getCloseTime(bytes32 userEntity) internal returns (uint256 closeTime) {
-        CloseTime.set(userEntity, block.timestamp);
-        closeTime = CloseTime.get(userEntity);
-        return closeTime;
+    function closeTime(bytes32 farmEntity) internal {
+        CloseTime.set(farmEntity, block.timestamp);
     }
 
-    function getBaseTime(bytes32 userEntity) internal returns (uint256 baseTime) {
-        uint256 startTime = StartTime.get(userEntity);
-        uint256 closeTime = CloseTime.get(userEntity);
+    function executeBaseTime(bytes32 farmEntity) internal returns (uint256 baseTime) {
+        uint256 startTime = StartTime.get(farmEntity);
+        uint256 closeTime = CloseTime.get(farmEntity);
         baseTime = closeTime - startTime;
-        BaseTime.set(userEntity, baseTime);
+        BaseTime.set(farmEntity, baseTime);
         return baseTime;
     }
 }
