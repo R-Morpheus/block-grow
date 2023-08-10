@@ -3,6 +3,8 @@ pragma solidity >=0.8.0;
 
 import { MudTest } from "@latticexyz/store/src/MudTest.sol";
 
+import { console } from "forge-std/console.sol";
+
 import { IWorld } from "../src/codegen/world/IWorld.sol";
 import { Balance, MiningLevel, MiningWork, MiningEquipment,
         StartTime, CloseTime, BaseTime,
@@ -16,17 +18,16 @@ contract LibTimeTest is MudTest {
   IWorld public world;
   bytes32 internal farmEntity = keccak256("farmEntity");
 
+  function setUp() public virtual override {
+    super.setUp();
+    vm.startPrank(worldAddress);
+  }
+
   function testStartTime() public {
     LibTime.startTime(farmEntity);
     uint256 startTime = StartTime.get(farmEntity);
     assertTrue(startTime > 0);
   }
-
-
-    function _initValue() internal {
-      LibMiningFarm.startFarm(farmEntity);
-      LibMiningFarm.upgradeFarm(farmEntity, 1);
-    }
 
     function testCloseTime() public {
     LibTime.startTime(farmEntity);
@@ -37,11 +38,13 @@ contract LibTimeTest is MudTest {
 
   function testExecuteBaseTime() public {
     LibTime.startTime(farmEntity);
-    LibTime.closeTime(farmEntity);
-
     uint256 startTime = StartTime.get(farmEntity);
-    uint256 closeTime = StartTime.get(farmEntity);
-    assert(startTime > closeTime);
+
+    vm.warp(block.timestamp + 1);
+
+    LibTime.closeTime(farmEntity);
+    uint256 closeTime = CloseTime.get(farmEntity);
+    assert(startTime < closeTime);
 
     uint256 baseTime = LibTime.executeBaseTime(farmEntity);
     assert(baseTime > 0);
