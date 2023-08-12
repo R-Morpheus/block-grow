@@ -18,7 +18,8 @@ library LibMiningFarm {
     }
 
     function upgradeFarm(bytes32 farmEntity, uint8 level) internal {
-        if (MiningLevel.get(farmEntity) == level){
+      uint8 baseLevel = MiningLevel.get(farmEntity);
+        if (baseLevel == level || baseLevel > level) {
             revert LibMiningFarm__InvalidLevel(farmEntity);
         }
         MiningLevel.set(farmEntity, level);

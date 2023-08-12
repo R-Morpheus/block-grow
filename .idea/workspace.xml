@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b0084e5-064a-4d75-ba9a-e903c80cef89" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/packages/contracts/test/LibMiningFarm.t.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/test/LibTime.t.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/test/LibTime.t.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +92,7 @@
       <workItem from="1691013849730" duration="3012000" />
       <workItem from="1691066764599" duration="8484000" />
       <workItem from="1691082687725" duration="11355000" />
-      <workItem from="1691687756225" duration="1133000" />
+      <workItem from="1691687756225" duration="4287000" />
     </task>
     <servers />
   </component>
