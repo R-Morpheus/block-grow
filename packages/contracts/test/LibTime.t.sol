@@ -3,8 +3,6 @@ pragma solidity >=0.8.0;
 
 import { MudTest } from "@latticexyz/store/src/MudTest.sol";
 
-import { console } from "forge-std/console.sol";
-
 import { IWorld } from "../src/codegen/world/IWorld.sol";
 import { Balance, MiningLevel, MiningWork, MiningEquipment,
         StartTime, CloseTime, BaseTime,

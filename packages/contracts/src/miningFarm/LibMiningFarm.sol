@@ -26,9 +26,11 @@ library LibMiningFarm {
     }
 
     function finishFarm(bytes32 farmEntity) internal {
-        if (MiningWork.get(farmEntity) == false){
-            revert LibMiningFarm__FarmAlreadyFinish(farmEntity);
-        }
+//      bool work = MiningWork.get(farmEntity);
+//        if (work == false){
+//            revert LibMiningFarm__FarmAlreadyFinish(farmEntity);
+//        }
+
         LibTime.closeTime(farmEntity);
         MiningWork.set(farmEntity, false);
     }

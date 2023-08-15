@@ -3,8 +3,6 @@ pragma solidity >=0.8.0;
 
 import { MudTest } from "@latticexyz/store/src/MudTest.sol";
 
-import { console } from "forge-std/console.sol";
-
 import { IWorld } from "../src/codegen/world/IWorld.sol";
 import { Balance, MiningLevel, MiningWork, MiningEquipment,
 StartTime, CloseTime, BaseTime,
@@ -14,7 +12,7 @@ import { LibTime } from "../src/time/LibTime.sol";
 import { LibBalance } from "../src/balance/LibBalance.sol";
 import { LibMiningFarm } from "../src/miningFarm/LibMiningFarm.sol";
 
-contract LibTimeTest is MudTest {
+contract LibMiningFarmTest is MudTest {
   IWorld public world;
   bytes32 internal farmEntity = keccak256("farmEntity");
 

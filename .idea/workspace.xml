@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b0084e5-064a-4d75-ba9a-e903c80cef89" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/packages/contracts/test/LibMiningFarm.t.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/contracts/src/systems/BalanceSystem.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/contracts/src/systems/MiningFarmSystem.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/contracts/src/systems/TimeSystem.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/contracts/test/LibBalance.t.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/mud/createClientComponents.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/mud/createClientComponents.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/mud/createSystemCalls.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/mud/createSystemCalls.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/ITimeSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/world/ITimeSystem.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IWorld.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IWorld.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/test/LibMiningFarm.t.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/test/LibMiningFarm.t.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/test/LibTime.t.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/test/LibTime.t.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/worlds.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/worlds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +72,17 @@
       <recent name="$PROJECT_DIR$/packages/contracts/src/time" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/packages/contracts/package.json" />
       <command value="run" />
@@ -71,6 +95,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.test" />
       </list>
     </recent_temporary>
@@ -92,7 +117,11 @@
       <workItem from="1691013849730" duration="3012000" />
       <workItem from="1691066764599" duration="8484000" />
       <workItem from="1691082687725" duration="11355000" />
-      <workItem from="1691687756225" duration="4287000" />
+      <workItem from="1691687756225" duration="6913000" />
+      <workItem from="1691996071849" duration="129000" />
+      <workItem from="1691996239269" duration="170000" />
+      <workItem from="1691996440439" duration="5768000" />
+      <workItem from="1692092664917" duration="2380000" />
     </task>
     <servers />
   </component>
