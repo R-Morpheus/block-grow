@@ -9,5 +9,10 @@ export function createClientComponents({ components }: SetupNetworkResult) {
     StartTime: overridableComponent(components.StartTime),
     CloseTime: overridableComponent(components.CloseTime),
     BaseTime: overridableComponent(components.BaseTime),
+    Balance: overridableComponent(components.Balance),
+    MiningWork: overridableComponent(components.MiningWork),
+    MiningLevel: overridableComponent(components.MiningLevel),
+    MiningEquipment: overridableComponent(components.MiningEquipment),
+    Player: overridableComponent(components.Player),
   };
 }

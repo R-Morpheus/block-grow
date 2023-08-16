@@ -5,21 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b0084e5-064a-4d75-ba9a-e903c80cef89" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/packages/contracts/src/systems/BalanceSystem.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/contracts/src/systems/MiningFarmSystem.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/contracts/src/systems/TimeSystem.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/contracts/test/LibBalance.t.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/client/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/contracts/src/addressToEntityKey.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/contracts/src/systems/MiningWorkSystem.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/mud/contractComponents.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/mud/contractComponents.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/mud/createClientComponents.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/mud/createClientComponents.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/mud/createSystemCalls.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/mud/createSystemCalls.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/ITimeSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/world/ITimeSystem.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/mud.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/mud.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/Tables.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/Tables.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/tables/User.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IBalanceSystem.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IMiningFarmSystem.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/ITimeSystem.sol" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IWorld.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IWorld.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/test/LibMiningFarm.t.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/test/LibMiningFarm.t.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/test/LibTime.t.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/test/LibTime.t.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/systems/BalanceSystem.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/systems/MiningFarmSystem.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/systems/TimeSystem.sol" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/worlds.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/worlds.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
@@ -42,23 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/rashid/Desktop/block-grow/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/rashid/Desktop/block-grow/packages/contracts/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/rashid/Desktop/block-grow/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -68,6 +75,9 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/contracts/src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/packages/contracts/src/time" />
     </key>
@@ -121,7 +131,7 @@
       <workItem from="1691996071849" duration="129000" />
       <workItem from="1691996239269" duration="170000" />
       <workItem from="1691996440439" duration="5768000" />
-      <workItem from="1692092664917" duration="2380000" />
+      <workItem from="1692092664917" duration="12128000" />
     </task>
     <servers />
   </component>

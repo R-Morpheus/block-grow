@@ -6,7 +6,7 @@ import { SetupNetworkResult } from "./setupNetwork";
 export type SystemCalls = ReturnType<typeof createSystemCalls>;
 
 export function createSystemCalls(
-  { worldSend, txReduced$, singletonEntity }: SetupNetworkResult,
+  { playerEntity, singletonEntity, worldSend, txReduced$ }: SetupNetworkResult,
   { Counter, StartTime, CloseTime, BaseTime }: ClientComponents
 ) {
   const increment = async () => {
@@ -14,26 +14,26 @@ export function createSystemCalls(
     await awaitStreamValue(txReduced$, (txHash) => txHash === tx.hash);
     return getComponentValue(Counter, singletonEntity);
   };
-  const startTime = async () => {
-    const tx = await worldSend("startTime", [singletonEntity]);
+  const upgradeLevelFarm = async () => {
+    const tx = await worldSend("upgradeLevelFarm", [singletonEntity]);
     await awaitStreamValue(txReduced$, (txHash) => txHash === tx.hash);
     return getComponentValue(StartTime, singletonEntity);
   };
-  const closeTime = async () => {
-    const tx = await worldSend("closeTime", [singletonEntity]);
+  const startFarm = async () => {
+    const tx = await worldSend("startFarm", [singletonEntity]);
     await awaitStreamValue(txReduced$, (txHash) => txHash === tx.hash);
     return getComponentValue(CloseTime, singletonEntity);
   };
-  const executeBaseTime = async () => {
-    const tx = await worldSend("executeBaseTime", [singletonEntity]);
+  const finishFarm = async () => {
+    const tx = await worldSend("finishFarm", [singletonEntity]);
     await awaitStreamValue(txReduced$, (txHash) => txHash === tx.hash);
     return getComponentValue(BaseTime, singletonEntity);
   };
 
   return {
     increment,
-    startTime,
-    closeTime,
-    executeBaseTime
+    upgradeLevelFarm,
+    startFarm,
+    finishFarm
   };
 }

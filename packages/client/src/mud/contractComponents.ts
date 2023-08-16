@@ -65,8 +65,8 @@ export function defineContractComponents(world: World) {
         }
       );
     })(),
-    User: (() => {
-      const tableId = new TableId("", "User");
+    Player: (() => {
+      const tableId = new TableId("", "Player");
       return defineComponent(
         world,
         {

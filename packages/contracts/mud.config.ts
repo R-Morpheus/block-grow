@@ -34,7 +34,7 @@ export default mudConfig({
       ...entityKey,
       schema: 'uint256'
     },
-    User:{
+    Player:{
       ...entityKey,
       schema: "bool",
     },

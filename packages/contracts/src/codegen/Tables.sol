@@ -7,7 +7,7 @@ import { Counter, CounterTableId } from "./tables/Counter.sol";
 import { StartTime, StartTimeTableId } from "./tables/StartTime.sol";
 import { CloseTime, CloseTimeTableId } from "./tables/CloseTime.sol";
 import { BaseTime, BaseTimeTableId } from "./tables/BaseTime.sol";
-import { User, UserTableId } from "./tables/User.sol";
+import { Player, PlayerTableId } from "./tables/Player.sol";
 import { Balance, BalanceTableId } from "./tables/Balance.sol";
 import { Blockchain, BlockchainTableId } from "./tables/Blockchain.sol";
 import { Block, BlockTableId } from "./tables/Block.sol";
