@@ -8,6 +8,7 @@ import { StartTime, StartTimeTableId } from "./tables/StartTime.sol";
 import { CloseTime, CloseTimeTableId } from "./tables/CloseTime.sol";
 import { BaseTime, BaseTimeTableId } from "./tables/BaseTime.sol";
 import { Player, PlayerTableId } from "./tables/Player.sol";
+import { PlayerEntity, PlayerEntityTableId } from "./tables/PlayerEntity.sol";
 import { Balance, BalanceTableId } from "./tables/Balance.sol";
 import { MiningEquipment, MiningEquipmentTableId } from "./tables/MiningEquipment.sol";
 import { MiningLevel, MiningLevelTableId } from "./tables/MiningLevel.sol";

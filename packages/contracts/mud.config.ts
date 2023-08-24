@@ -38,6 +38,10 @@ export default mudConfig({
       ...entityKey,
       schema: "bool",
     },
+    PlayerEntity:{
+      ...entityKey,
+      schema: EntityId,
+    },
     Balance:{
       ...entityKey,
       schema: "uint256",

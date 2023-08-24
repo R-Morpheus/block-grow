@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b0084e5-064a-4d75-ba9a-e903c80cef89" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/packages/contracts/src/systems/SpawnSystem.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/components/MiningFarm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/components/MiningFarm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/mud.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/mud.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/script/PostDeploy.s.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/script/PostDeploy.s.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IWorld.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IWorld.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/systems/MiningWorkSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/systems/MiningWorkSystem.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/worlds.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/worlds.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +115,7 @@
       <workItem from="1691996071849" duration="129000" />
       <workItem from="1691996239269" duration="170000" />
       <workItem from="1691996440439" duration="5768000" />
-      <workItem from="1692092664917" duration="23428000" />
+      <workItem from="1692092664917" duration="26308000" />
     </task>
     <servers />
   </component>

@@ -80,6 +80,21 @@ export function defineContractComponents(world: World) {
         }
       );
     })(),
+    PlayerEntity: (() => {
+      const tableId = new TableId("", "PlayerEntity");
+      return defineComponent(
+        world,
+        {
+          value: RecsType.String,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
     Balance: (() => {
       const tableId = new TableId("", "Balance");
       return defineComponent(

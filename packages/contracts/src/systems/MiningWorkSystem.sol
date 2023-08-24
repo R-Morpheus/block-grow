@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
 
-import { Balance, MiningLevel, MiningWork, MiningEquipment, BaseTime } from "../codegen/Tables.sol";
+import { Balance, MiningLevel, MiningWork, MiningEquipment, BaseTime, Player } from "../codegen/Tables.sol";
 import { LibTime } from "../time/LibTime.sol";
 import { LibMiningFarm } from "../miningFarm/LibMiningFarm.sol";
 import { LibBalance } from "../balance/LibBalance.sol";
@@ -21,7 +21,7 @@ contract MiningWorkSystem is System {
   }
 
   function finishFarm(bytes32 farmEntity) public{
-    bytes32 player = addressToEntityKey(address(_msgSender()));
+    bytes32 player = Player.get();
 
     LibMiningFarm.finishFarm(farmEntity);
 
