@@ -42,22 +42,6 @@ export default mudConfig({
       ...entityKey,
       schema: "uint256",
     },
-    Blockchain:{
-      keySchema: {},
-      schema: EntityId,
-    },
-    Block:{
-      keySchema: {},
-      schema: EntityId,
-    },
-    Transaction:{
-      keySchema: {},
-      schema: EntityId,
-    },
-    CryptoCurrency:{
-      keySchema: {},
-      schema: "uint256",
-    },
     MiningEquipment:{
       ...entityKey,
       schema: EntityId,
@@ -70,14 +54,10 @@ export default mudConfig({
       ...entityKey,
       schema: 'bool',
     },
-    Market:{
+    MiningFarms:{
       ...entityKey,
-      schema: EntityIdArray,
-    },
-    Event:{
-      keySchema: {},
-      schema: 'uint48',
-    },
+      schema: EntityIdSet,
+    }
   },
   modules: [
     {

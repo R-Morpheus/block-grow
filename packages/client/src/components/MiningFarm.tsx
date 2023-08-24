@@ -73,7 +73,6 @@ const MiningFarm = () => {
             <DataList dataName={value.nameData} dataValue={value.valueData}/>
           ))}
         </div>
-
         <div className='border border-black w-full h-full flex justify-center'>
             store
         </div>

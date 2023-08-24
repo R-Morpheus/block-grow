@@ -95,66 +95,6 @@ export function defineContractComponents(world: World) {
         }
       );
     })(),
-    Blockchain: (() => {
-      const tableId = new TableId("", "Blockchain");
-      return defineComponent(
-        world,
-        {
-          value: RecsType.String,
-        },
-        {
-          metadata: {
-            contractId: tableId.toHex(),
-            tableId: tableId.toString(),
-          },
-        }
-      );
-    })(),
-    Block: (() => {
-      const tableId = new TableId("", "Block");
-      return defineComponent(
-        world,
-        {
-          value: RecsType.String,
-        },
-        {
-          metadata: {
-            contractId: tableId.toHex(),
-            tableId: tableId.toString(),
-          },
-        }
-      );
-    })(),
-    Transaction: (() => {
-      const tableId = new TableId("", "Transaction");
-      return defineComponent(
-        world,
-        {
-          value: RecsType.String,
-        },
-        {
-          metadata: {
-            contractId: tableId.toHex(),
-            tableId: tableId.toString(),
-          },
-        }
-      );
-    })(),
-    CryptoCurrency: (() => {
-      const tableId = new TableId("", "CryptoCurrency");
-      return defineComponent(
-        world,
-        {
-          value: RecsType.BigInt,
-        },
-        {
-          metadata: {
-            contractId: tableId.toHex(),
-            tableId: tableId.toString(),
-          },
-        }
-      );
-    })(),
     MiningEquipment: (() => {
       const tableId = new TableId("", "MiningEquipment");
       return defineComponent(
@@ -200,27 +140,12 @@ export function defineContractComponents(world: World) {
         }
       );
     })(),
-    Market: (() => {
-      const tableId = new TableId("", "Market");
+    MiningFarms: (() => {
+      const tableId = new TableId("", "MiningFarms");
       return defineComponent(
         world,
         {
           value: RecsType.StringArray,
-        },
-        {
-          metadata: {
-            contractId: tableId.toHex(),
-            tableId: tableId.toString(),
-          },
-        }
-      );
-    })(),
-    Event: (() => {
-      const tableId = new TableId("", "Event");
-      return defineComponent(
-        world,
-        {
-          value: RecsType.Number,
         },
         {
           metadata: {
