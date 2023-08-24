@@ -6,7 +6,6 @@ import MiningFarm from "./components/MiningFarm";
 export const App = () => {
   const {
     components: {
-      Counter,
       StartTime,
       CloseTime,
       BaseTime ,
@@ -27,66 +26,32 @@ export const App = () => {
   const miningWorks = useComponentValue(MiningWork, singletonEntity);
   const miningLevels = useComponentValue(MiningLevel, singletonEntity);
 
-
-
-
-
-  // const [localSeconds, setLocalSeconds] = useState(0);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setLocalSeconds(prev => prev + 1);
-  //   }, 1000);
-  //
-  //   return () => clearInterval(interval);
-  // }, []);
-
-
-  // const handleIncrementTime = async () => {
-  //   try {
-  //     setLocalSeconds(prev => prev + 1);
-  //     const newValue = await startTime();
-  //     setLocalSeconds(Number(newValue));
-  //   } catch (error) {
-  //     console.error("Ошибка при обновлении времени:", error);
-  //   }
-  // }
-
-
   const data = useMUD()
   console.log(data)
 
   return (
-    <>
-      <div>
-
-        <button
-          type="button"
-          onClick={async (event) => {
+    <div className='bg-gray-900 text-gray-100 min-h-screen'>
+      <header>
+        <button type="button" onClick={async (event) => {
             event.preventDefault();
-            console.log("new starttime value:", await startFarm());}}
-          className=' m-5 border-2 border-amber-950'>
-          start farm
-
+            await startFarm();}}
+          className='m-5 border border-gray-100 p-1'>
+          START
         </button>
-        <button
-          type="button"
-          onClick={async (event) => {
+        <button type="button" onClick={async (event) => {
             event.preventDefault();
             console.log("new starttime value:", await upgradeLevelFarm());}}
-          className='m-5 border-2 border-amber-950'>
-          upgrade farm
+          className='m-5 border border-gray-100 p-1'>
+          UPGRADE
         </button>
-        <button
-          type="button"
-          onClick={async (event) => {
+        <button type="button" onClick={async (event) => {
             event.preventDefault();
             console.log("new starttime value:", await finishFarm());}}
-          className='m-5 border-2 border-amber-950'>
-          finish farm
+          className='m-5 border border-gray-100 p-1'>
+          FINISH
         </button>
-      </div>
+      </header>
       <MiningFarm/>
-    </>
+    </div>
   );
 };
