@@ -28,6 +28,7 @@ export const App = () => {
 
   const miningWorks = useComponentValue(MiningWork, singletonEntity);
   const miningLevels = useComponentValue(MiningLevel, singletonEntity);
+  const playerSpawn = PlayerEntity
 
   const data = useMUD()
   console.log('data', data)

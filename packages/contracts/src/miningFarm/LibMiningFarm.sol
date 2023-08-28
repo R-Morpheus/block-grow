@@ -3,11 +3,18 @@ pragma solidity >=0.8.0;
 
 import { MiningEquipment, MiningLevel, MiningWork, StartTime, CloseTime, BaseTime } from "../codegen/Tables.sol";
 import { LibTime } from "../time/LibTime.sol";
+import { getUniqueEntity } from "@latticexyz/world/src/modules/uniqueentity/getUniqueEntity.sol";
 
 library LibMiningFarm {
     error LibMiningFarm__FarmAlreadyUse(bytes32 farmEntity);
     error LibMiningFarm__FarmAlreadyFinish(bytes32 farmEntity);
     error LibMiningFarm__InvalidLevel(bytes32 farmEntity);
+
+    function entityFarm(bytes32 playerEntity) internal returns (bytes32 farmEntity){
+      bytes32 farmEntity = getUniqueEntity();
+      MiningEquipment.set(playerEntity, farmEntity);
+      return farmEntity;
+    }
 
     function startFarm(bytes32 farmEntity) internal {
         if (MiningWork.get(farmEntity) == true){
@@ -25,13 +32,12 @@ library LibMiningFarm {
         MiningLevel.set(farmEntity, level);
     }
 
-    function finishFarm(bytes32 farmEntity) internal returns(uint256 baseTime) {
+    function finishFarm(bytes32 farmEntity) internal {
       bool work = MiningWork.get(farmEntity);
         if (work == false){
             revert LibMiningFarm__FarmAlreadyFinish(farmEntity);
         }
         LibTime.closeTime(farmEntity);
         MiningWork.set(farmEntity, false);
-        return LibTime.executeBaseTime(farmEntity);
     }
 }

@@ -30,9 +30,8 @@ library Balance {
   }
 
   function getKeySchema() internal pure returns (Schema) {
-    SchemaType[] memory _schema = new SchemaType[](2);
+    SchemaType[] memory _schema = new SchemaType[](1);
     _schema[0] = SchemaType.BYTES32;
-    _schema[1] = SchemaType.BYTES32;
 
     return SchemaLib.encode(_schema);
   }
@@ -67,39 +66,35 @@ library Balance {
   }
 
   /** Get balance */
-  function get(bytes32 entity, bytes32 token) internal view returns (uint256 balance) {
-    bytes32[] memory _keyTuple = new bytes32[](2);
+  function get(bytes32 entity) internal view returns (uint256 balance) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
-    _keyTuple[1] = token;
 
     bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 0);
     return (uint256(Bytes.slice32(_blob, 0)));
   }
 
   /** Get balance (using the specified store) */
-  function get(IStore _store, bytes32 entity, bytes32 token) internal view returns (uint256 balance) {
-    bytes32[] memory _keyTuple = new bytes32[](2);
+  function get(IStore _store, bytes32 entity) internal view returns (uint256 balance) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
-    _keyTuple[1] = token;
 
     bytes memory _blob = _store.getField(_tableId, _keyTuple, 0);
     return (uint256(Bytes.slice32(_blob, 0)));
   }
 
   /** Set balance */
-  function set(bytes32 entity, bytes32 token, uint256 balance) internal {
-    bytes32[] memory _keyTuple = new bytes32[](2);
+  function set(bytes32 entity, uint256 balance) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
-    _keyTuple[1] = token;
 
     StoreSwitch.setField(_tableId, _keyTuple, 0, abi.encodePacked((balance)));
   }
 
   /** Set balance (using the specified store) */
-  function set(IStore _store, bytes32 entity, bytes32 token, uint256 balance) internal {
-    bytes32[] memory _keyTuple = new bytes32[](2);
+  function set(IStore _store, bytes32 entity, uint256 balance) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
-    _keyTuple[1] = token;
 
     _store.setField(_tableId, _keyTuple, 0, abi.encodePacked((balance)));
   }
@@ -110,26 +105,23 @@ library Balance {
   }
 
   /** Encode keys as a bytes32 array using this table's schema */
-  function encodeKeyTuple(bytes32 entity, bytes32 token) internal pure returns (bytes32[] memory _keyTuple) {
-    _keyTuple = new bytes32[](2);
+  function encodeKeyTuple(bytes32 entity) internal pure returns (bytes32[] memory _keyTuple) {
+    _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
-    _keyTuple[1] = token;
   }
 
   /* Delete all data for given keys */
-  function deleteRecord(bytes32 entity, bytes32 token) internal {
-    bytes32[] memory _keyTuple = new bytes32[](2);
+  function deleteRecord(bytes32 entity) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
-    _keyTuple[1] = token;
 
     StoreSwitch.deleteRecord(_tableId, _keyTuple);
   }
 
   /* Delete all data for given keys (using the specified store) */
-  function deleteRecord(IStore _store, bytes32 entity, bytes32 token) internal {
-    bytes32[] memory _keyTuple = new bytes32[](2);
+  function deleteRecord(IStore _store, bytes32 entity) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
-    _keyTuple[1] = token;
 
     _store.deleteRecord(_tableId, _keyTuple);
   }

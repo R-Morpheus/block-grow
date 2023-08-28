@@ -15,5 +15,6 @@ export function createClientComponents({ components }: SetupNetworkResult) {
     MiningEquipment: overridableComponent(components.MiningEquipment),
     PlayerEntity: overridableComponent(components.PlayerEntity),
     MiningFarms: overridableComponent(components.MiningFarms),
+    // Token: overridableComponent((components.Token))
   };
 }

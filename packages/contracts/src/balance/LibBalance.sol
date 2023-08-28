@@ -9,8 +9,8 @@ library LibBalance {
   error LibBalance__FarmAlreadyUse();
 
     function getBalance(bytes32 playerEntity) internal view returns (uint256 balance){
-      bytes32 tokenEntity = Token.getTokenEntity(playerEntity);
-      balance = Balance.get(playerEntity, tokenEntity);
+//      bytes32 tokenEntity = Token.getTokenEntity(playerEntity);
+      balance = Balance.get(playerEntity);
       return balance;
     }
 
@@ -20,14 +20,12 @@ library LibBalance {
     if(MiningWork.get(farmEntity) == true){
       revert LibBalance__FarmAlreadyUse();
     }
-    LibMiningFarm.finishFarm(farmEntity);
-
     uint8 level = MiningLevel.get(farmEntity);
     uint256 baseTime = BaseTime.get(farmEntity);
-    bytes32 tokenEntity = Token.getTokenEntity(playerEntity);
-    uint256 balance = Balance.get(playerEntity, tokenEntity);
+//    bytes32 tokenEntity = Token.getTokenEntity(playerEntity);
+    uint256 balance = Balance.get(playerEntity);
     uint256 newBalance = (baseTime * level) + balance;
 
-    Balance.set(playerEntity, tokenEntity, newBalance);
+    Balance.set(playerEntity, newBalance);
   }
 }

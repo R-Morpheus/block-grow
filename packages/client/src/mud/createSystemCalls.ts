@@ -1,4 +1,4 @@
-import { runQuery, Has, HasValue, getComponentValueStrict, getComponentValue } from "@latticexyz/recs";
+import { getComponentValue } from "@latticexyz/recs";
 import { awaitStreamValue } from "@latticexyz/utils";
 import { ClientComponents } from "./createClientComponents";
 import { SetupNetworkResult } from "./setupNetwork";
@@ -6,18 +6,20 @@ import { SetupNetworkResult } from "./setupNetwork";
 export type SystemCalls = ReturnType<typeof createSystemCalls>;
 
 export function createSystemCalls(
-  { playerEntity, singletonEntity, worldSend }: SetupNetworkResult,
-  { StartTime, CloseTime, BaseTime, PlayerEntity, MiningFarms }: ClientComponents
+  { playerEntity, singletonEntity, worldSend, txReduced$ }: SetupNetworkResult,
+  { StartTime, CloseTime, BaseTime }: ClientComponents
 ) {
   const upgradeLevelFarm = async () => {
-    await worldSend("upgradeLevelFarm", [singletonEntity]);
+    const tx = await worldSend("upgradeLevelFarm", [singletonEntity]);
+    await awaitStreamValue(txReduced$, (txHash) => txHash === tx.hash);
   };
   const startFarm = async () => {
-    await worldSend("startFarm", [singletonEntity]);
-
+    const tx = await worldSend("startFarm", [singletonEntity]);
+    await awaitStreamValue(txReduced$, (txHash) => txHash === tx.hash);
   };
   const finishFarm = async () => {
-    await worldSend("finishFarm", [singletonEntity, playerEntity]);
+    const tx = await worldSend("finishFarm", [singletonEntity]);
+    await awaitStreamValue(txReduced$, (txHash) => txHash === tx.hash);
   };
 
   return {

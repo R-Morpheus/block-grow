@@ -25,6 +25,7 @@ contract MiningWorkSystem is System {
   function finishFarm(bytes32 playerEntity) public{
     bytes32 farmEntity = MiningEquipment.get(playerEntity);
     LibMiningFarm.finishFarm(farmEntity);
+    LibTime.executeBaseTime(farmEntity);
     LibBalance.setBalance(playerEntity);
   }
 }

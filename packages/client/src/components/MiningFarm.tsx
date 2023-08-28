@@ -10,28 +10,29 @@ const MiningFarm = () => {
 
   const {
     components: {
-      Counter,
       StartTime,
       CloseTime,
       BaseTime ,
       Balance,
       MiningWork,
       MiningLevel,
+      // Token,
       MiningEquipment
     },
-    systemCalls: { increment, startFarm, finishFarm, upgradeLevelFarm },
+    systemCalls: { startFarm, finishFarm, upgradeLevelFarm },
     network: { singletonEntity , playerEntity },
   } = useMUD();
 
-
+  // const token = useComponentValue(Token, playerEntity)?.value
 
   const valueList = [
-    {nameData: 'Level', valueData: useComponentValue(MiningLevel, singletonEntity)?.value,},
-    {nameData: 'Work', valueData: useComponentValue(MiningWork, singletonEntity)?.value,},
-    {nameData: 'Balance', valueData: useComponentValue(Balance, singletonEntity)?.value,},
-    {nameData: 'Start Time', valueData: useComponentValue(StartTime, singletonEntity)?.value,},
-    {nameData: 'Finish Time', valueData: useComponentValue(CloseTime, singletonEntity)?.value,},
-    {nameData: 'Base Time', valueData: useComponentValue(BaseTime, singletonEntity)?.value,},
+    {nameData: 'Level', valueData: useComponentValue(MiningLevel, playerEntity)?.value},
+    // {nameData: 'Token', valueData: useComponentValue(Token, playerEntity)?.value,},
+    {nameData: 'Work', valueData: useComponentValue(MiningWork, playerEntity)?.value},
+    // {nameData: 'Balance', valueData: useComponentValue(Balance, playerEntity, token},
+    {nameData: 'Start Time', valueData: useComponentValue(StartTime, playerEntity)?.value},
+    {nameData: 'Finish Time', valueData: useComponentValue(CloseTime, playerEntity)?.value},
+    {nameData: 'Base Time', valueData: useComponentValue(BaseTime, playerEntity)?.value},
   ]
 
 
