@@ -6,6 +6,6 @@ artifacts/
 abi/
 types/
 broadcast/
-
+.idea/workspace.xml
 # Ignore MUD deploy artifacts
 deploys/**/*.json
