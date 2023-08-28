@@ -20,11 +20,17 @@ import { PackedCounter, PackedCounterLib } from "@latticexyz/store/src/PackedCou
 bytes32 constant _tableId = bytes32(abi.encodePacked(bytes16(""), bytes16("Balance")));
 bytes32 constant BalanceTableId = _tableId;
 
+struct BalanceData {
+  bytes32 token;
+  uint256 balance;
+}
+
 library Balance {
   /** Get the table's schema */
   function getSchema() internal pure returns (Schema) {
-    SchemaType[] memory _schema = new SchemaType[](1);
-    _schema[0] = SchemaType.UINT256;
+    SchemaType[] memory _schema = new SchemaType[](2);
+    _schema[0] = SchemaType.BYTES32;
+    _schema[1] = SchemaType.UINT256;
 
     return SchemaLib.encode(_schema);
   }
@@ -38,8 +44,9 @@ library Balance {
 
   /** Get the table's metadata */
   function getMetadata() internal pure returns (string memory, string[] memory) {
-    string[] memory _fieldNames = new string[](1);
-    _fieldNames[0] = "value";
+    string[] memory _fieldNames = new string[](2);
+    _fieldNames[0] = "token";
+    _fieldNames[1] = "balance";
     return ("Balance", _fieldNames);
   }
 
@@ -65,43 +72,132 @@ library Balance {
     _store.setMetadata(_tableId, _tableName, _fieldNames);
   }
 
-  /** Get value */
-  function get(bytes32 entity) internal view returns (uint256 value) {
+  /** Get token */
+  function getToken(bytes32 entity) internal view returns (bytes32 token) {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
     bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 0);
-    return (uint256(Bytes.slice32(_blob, 0)));
+    return (Bytes.slice32(_blob, 0));
   }
 
-  /** Get value (using the specified store) */
-  function get(IStore _store, bytes32 entity) internal view returns (uint256 value) {
+  /** Get token (using the specified store) */
+  function getToken(IStore _store, bytes32 entity) internal view returns (bytes32 token) {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
     bytes memory _blob = _store.getField(_tableId, _keyTuple, 0);
+    return (Bytes.slice32(_blob, 0));
+  }
+
+  /** Set token */
+  function setToken(bytes32 entity, bytes32 token) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    StoreSwitch.setField(_tableId, _keyTuple, 0, abi.encodePacked((token)));
+  }
+
+  /** Set token (using the specified store) */
+  function setToken(IStore _store, bytes32 entity, bytes32 token) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    _store.setField(_tableId, _keyTuple, 0, abi.encodePacked((token)));
+  }
+
+  /** Get balance */
+  function getBalance(bytes32 entity) internal view returns (uint256 balance) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 1);
     return (uint256(Bytes.slice32(_blob, 0)));
   }
 
-  /** Set value */
-  function set(bytes32 entity, uint256 value) internal {
+  /** Get balance (using the specified store) */
+  function getBalance(IStore _store, bytes32 entity) internal view returns (uint256 balance) {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    StoreSwitch.setField(_tableId, _keyTuple, 0, abi.encodePacked((value)));
+    bytes memory _blob = _store.getField(_tableId, _keyTuple, 1);
+    return (uint256(Bytes.slice32(_blob, 0)));
   }
 
-  /** Set value (using the specified store) */
-  function set(IStore _store, bytes32 entity, uint256 value) internal {
+  /** Set balance */
+  function setBalance(bytes32 entity, uint256 balance) internal {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    _store.setField(_tableId, _keyTuple, 0, abi.encodePacked((value)));
+    StoreSwitch.setField(_tableId, _keyTuple, 1, abi.encodePacked((balance)));
+  }
+
+  /** Set balance (using the specified store) */
+  function setBalance(IStore _store, bytes32 entity, uint256 balance) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    _store.setField(_tableId, _keyTuple, 1, abi.encodePacked((balance)));
+  }
+
+  /** Get the full data */
+  function get(bytes32 entity) internal view returns (BalanceData memory _table) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    bytes memory _blob = StoreSwitch.getRecord(_tableId, _keyTuple, getSchema());
+    return decode(_blob);
+  }
+
+  /** Get the full data (using the specified store) */
+  function get(IStore _store, bytes32 entity) internal view returns (BalanceData memory _table) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    bytes memory _blob = _store.getRecord(_tableId, _keyTuple, getSchema());
+    return decode(_blob);
+  }
+
+  /** Set the full data using individual values */
+  function set(bytes32 entity, bytes32 token, uint256 balance) internal {
+    bytes memory _data = encode(token, balance);
+
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    StoreSwitch.setRecord(_tableId, _keyTuple, _data);
+  }
+
+  /** Set the full data using individual values (using the specified store) */
+  function set(IStore _store, bytes32 entity, bytes32 token, uint256 balance) internal {
+    bytes memory _data = encode(token, balance);
+
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    _store.setRecord(_tableId, _keyTuple, _data);
+  }
+
+  /** Set the full data using the data struct */
+  function set(bytes32 entity, BalanceData memory _table) internal {
+    set(entity, _table.token, _table.balance);
+  }
+
+  /** Set the full data using the data struct (using the specified store) */
+  function set(IStore _store, bytes32 entity, BalanceData memory _table) internal {
+    set(_store, entity, _table.token, _table.balance);
+  }
+
+  /** Decode the tightly packed blob using this table's schema */
+  function decode(bytes memory _blob) internal pure returns (BalanceData memory _table) {
+    _table.token = (Bytes.slice32(_blob, 0));
+
+    _table.balance = (uint256(Bytes.slice32(_blob, 32)));
   }
 
   /** Tightly pack full data using this table's schema */
-  function encode(uint256 value) internal pure returns (bytes memory) {
-    return abi.encodePacked(value);
+  function encode(bytes32 token, uint256 balance) internal pure returns (bytes memory) {
+    return abi.encodePacked(token, balance);
   }
 
   /** Encode keys as a bytes32 array using this table's schema */

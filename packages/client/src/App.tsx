@@ -2,6 +2,8 @@ import { useComponentValue } from "@latticexyz/react";
 import { useMUD } from "./MUDContext";
 import {useEffect, useState} from "react";
 import MiningFarm from "./components/MiningFarm";
+import { runQuery, Has, HasValue, getComponentValueStrict, getComponentValue } from "@latticexyz/recs";
+
 
 export const App = () => {
   const {
@@ -12,10 +14,11 @@ export const App = () => {
       Balance,
       MiningWork,
       MiningLevel,
-      MiningEquipment
+      MiningEquipment,
+      PlayerEntity,
     },
-    systemCalls: { increment, startFarm, finishFarm, upgradeLevelFarm },
-    network: { singletonEntity , playerEntity },
+    systemCalls: { startFarm, finishFarm, upgradeLevelFarm },
+    network: { singletonEntity , playerEntity, world },
   } = useMUD();
 
   const startTimes = useComponentValue(StartTime, singletonEntity);
@@ -27,7 +30,11 @@ export const App = () => {
   const miningLevels = useComponentValue(MiningLevel, singletonEntity);
 
   const data = useMUD()
-  console.log(data)
+  console.log('data', data)
+  const matchingEntities = runQuery([
+    Has(PlayerEntity),
+  ])
+  console.log('entityes', matchingEntities)
 
   return (
     <div className='bg-gray-900 text-gray-100 min-h-screen'>

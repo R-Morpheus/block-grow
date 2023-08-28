@@ -8,5 +8,5 @@ interface IMiningWorkSystem {
 
   function startFarm(bytes32 farmEntity) external;
 
-  function finishFarm(bytes32 farmEntity) external;
+  function finishFarm(bytes32 farmEntity, bytes32 playerEntity) external;
 }

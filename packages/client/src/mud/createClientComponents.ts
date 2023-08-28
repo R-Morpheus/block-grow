@@ -13,6 +13,7 @@ export function createClientComponents({ components }: SetupNetworkResult) {
     MiningWork: overridableComponent(components.MiningWork),
     MiningLevel: overridableComponent(components.MiningLevel),
     MiningEquipment: overridableComponent(components.MiningEquipment),
-    Player: overridableComponent(components.Player),
+    PlayerEntity: overridableComponent(components.PlayerEntity),
+    MiningFarms: overridableComponent(components.MiningFarms),
   };
 }

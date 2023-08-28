@@ -34,17 +34,16 @@ export default mudConfig({
       ...entityKey,
       schema: 'uint256'
     },
-    Player:{
+    PlayerEntity:{
       ...entityKey,
       schema: "bool",
     },
-    PlayerEntity:{
-      ...entityKey,
-      schema: EntityId,
-    },
     Balance:{
       ...entityKey,
-      schema: "uint256",
+      schema: {
+        token: EntityId,
+        balance: "uint256",
+      },
     },
     MiningEquipment:{
       ...entityKey,
