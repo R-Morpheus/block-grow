@@ -60,7 +60,14 @@ export default mudConfig({
     MiningFarms:{
       ...entityKey,
       schema: EntityIdSet,
-    }
+    },
+    Token: {
+      ...entityKey,
+      schema: {
+        name: 'string',
+        tokenEntity: EntityId,
+      }
+    },
   },
   modules: [
     {

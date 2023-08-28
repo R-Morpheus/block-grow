@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
 
-import { MiningFarms, PlayerEntity, PlayerEntityData, MiningEquipment } from "../codegen/Tables.sol";
+import { MiningFarms, PlayerEntity, PlayerEntityData, MiningEquipment, Token } from "../codegen/Tables.sol";
 import { System } from "@latticexyz/world/src/System.sol";
 import { getUniqueEntity } from "@latticexyz/world/src/modules/uniqueentity/getUniqueEntity.sol";
 import { addressToEntityKey } from "../addressToEntityKey.sol";
@@ -14,6 +14,10 @@ contract SpawnSystem is System {
 
     bytes32 farmEntity = getUniqueEntity();
     MiningEquipment.set(owner, farmEntity);
+
+    string memory tokenName = "ETH";
+    bytes32 tokenEntity = getUniqueEntity();
+    Token.set(owner, tokenName, tokenEntity);
 
     MiningFarms.push(owner, farmEntity);
   }

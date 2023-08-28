@@ -13,3 +13,4 @@ import { MiningEquipment, MiningEquipmentTableId } from "./tables/MiningEquipmen
 import { MiningLevel, MiningLevelTableId } from "./tables/MiningLevel.sol";
 import { MiningWork, MiningWorkTableId } from "./tables/MiningWork.sol";
 import { MiningFarms, MiningFarmsTableId } from "./tables/MiningFarms.sol";
+import { Token, TokenData, TokenTableId } from "./tables/Token.sol";
