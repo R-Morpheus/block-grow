@@ -39,9 +39,11 @@ export default mudConfig({
       schema: "bool",
     },
     Balance:{
-      ...entityKey,
-      schema: {
+      keySchema: {
+        entity: EntityId,
         token: EntityId,
+      },
+      schema: {
         balance: "uint256",
       },
     },
@@ -68,6 +70,7 @@ export default mudConfig({
         tokenEntity: EntityId,
       }
     },
+
   },
   modules: [
     {

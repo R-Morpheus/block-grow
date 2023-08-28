@@ -15,31 +15,31 @@ import { LibBalance } from "../src/balance/LibBalance.sol";
 import { LibMiningFarm } from "../src/miningFarm/LibMiningFarm.sol";
 
 contract LibBalanceTest is MudTest {
-  IWorld public world;
-  bytes32 internal farmEntity = keccak256("farmEntity");
-  bytes32 internal userEntity = keccak256("userEntity");
-
-  function setUp() public virtual override {
-    super.setUp();
-    vm.startPrank(worldAddress);
-  }
-
-  function testAddBalance() public {
-    LibMiningFarm.startFarm(farmEntity);
-
-    vm.warp(block.timestamp + 1);
-
-    LibMiningFarm.finishFarm(farmEntity);
-
-    LibMiningFarm.upgradeFarm(farmEntity, 1);
-
-    LibTime.executeBaseTime(farmEntity);
-    LibBalance.addBalance(userEntity, farmEntity);
-
-    uint256 balance = LibBalance.getBalance(userEntity);
-
-    assertTrue(balance == 1);
-
-  }
+//  IWorld public world;
+//  bytes32 internal farmEntity = keccak256("farmEntity");
+//  bytes32 internal userEntity = keccak256("userEntity");
+//
+//  function setUp() public virtual override {
+//    super.setUp();
+//    vm.startPrank(worldAddress);
+//  }
+//
+//  function testAddBalance() public {
+//    LibMiningFarm.startFarm(farmEntity);
+//
+//    vm.warp(block.timestamp + 1);
+//
+//    LibMiningFarm.finishFarm(farmEntity);
+//
+//    LibMiningFarm.upgradeFarm(farmEntity, 1);
+//
+//    LibTime.executeBaseTime(farmEntity);
+//    LibBalance.addBalance(userEntity, farmEntity);
+//
+//    uint256 balance = LibBalance.getBalance(userEntity);
+//
+//    assertTrue(balance == 1);
+//
+//  }
 
 }

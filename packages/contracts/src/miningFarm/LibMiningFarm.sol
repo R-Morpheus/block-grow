@@ -19,18 +19,19 @@ library LibMiningFarm {
 
     function upgradeFarm(bytes32 farmEntity, uint8 level) internal {
       uint8 baseLevel = MiningLevel.get(farmEntity);
-        if (baseLevel == level || baseLevel > level) {
+        if (baseLevel > level) {
             revert LibMiningFarm__InvalidLevel(farmEntity);
         }
         MiningLevel.set(farmEntity, level);
     }
 
-    function finishFarm(bytes32 farmEntity) internal {
+    function finishFarm(bytes32 farmEntity) internal returns(uint256 baseTime) {
       bool work = MiningWork.get(farmEntity);
         if (work == false){
             revert LibMiningFarm__FarmAlreadyFinish(farmEntity);
         }
         LibTime.closeTime(farmEntity);
         MiningWork.set(farmEntity, false);
+        return LibTime.executeBaseTime(farmEntity);
     }
 }

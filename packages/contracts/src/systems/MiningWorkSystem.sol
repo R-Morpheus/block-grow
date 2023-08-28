@@ -11,23 +11,20 @@ import { addressToEntityKey } from "../addressToEntityKey.sol";
 
 contract MiningWorkSystem is System {
 
-  function upgradeLevelFarm(bytes32 farmEntity) public{
+  function upgradeLevelFarm(bytes32 playerEntity) public{
+    bytes32 farmEntity = MiningEquipment.get(playerEntity);
     uint8 level = MiningLevel.get(farmEntity);
     LibMiningFarm.upgradeFarm(farmEntity, level + 1);
   }
 
-  function startFarm(bytes32 farmEntity) public {
+  function startFarm(bytes32 playerEntity) public {
+    bytes32 farmEntity = MiningEquipment.get(playerEntity);
     LibMiningFarm.startFarm(farmEntity);
   }
 
-  function finishFarm(bytes32 farmEntity, bytes32 playerEntity) public{
+  function finishFarm(bytes32 playerEntity) public{
+    bytes32 farmEntity = MiningEquipment.get(playerEntity);
     LibMiningFarm.finishFarm(farmEntity);
-
-    uint8 level = MiningLevel.get(farmEntity);
-    uint256 baseTime = LibTime.executeBaseTime(farmEntity);
-    uint256 balance = Balance.get(playerEntity);
-    uint256 newBalance = (baseTime * level) + balance;
-
-    Balance.set(playerEntity, newBalance);
+    LibBalance.setBalance(playerEntity);
   }
 }

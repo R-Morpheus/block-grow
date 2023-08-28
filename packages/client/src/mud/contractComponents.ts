@@ -85,7 +85,6 @@ export function defineContractComponents(world: World) {
       return defineComponent(
         world,
         {
-          token: RecsType.String,
           balance: RecsType.BigInt,
         },
         {
