@@ -10,12 +10,6 @@ library LibMiningFarm {
     error LibMiningFarm__FarmAlreadyFinish(bytes32 farmEntity);
     error LibMiningFarm__InvalidLevel(bytes32 farmEntity);
 
-    function entityFarm(bytes32 playerEntity) internal returns (bytes32 farmEntity){
-      bytes32 farmEntity = getUniqueEntity();
-      MiningEquipment.set(playerEntity, farmEntity);
-      return farmEntity;
-    }
-
     function startFarm(bytes32 farmEntity) internal {
         if (MiningWork.get(farmEntity) == true){
             revert LibMiningFarm__FarmAlreadyUse(farmEntity);

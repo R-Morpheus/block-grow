@@ -8,7 +8,7 @@ import {BytesLike, Overrides} from "ethers";
 export type SystemCalls = ReturnType<typeof createSystemCalls>;
 
 export function createSystemCalls(
-  { playerEntity, singletonEntity, worldSend, txReduced$ }: SetupNetworkResult,
+  {worldSend, txReduced$ }: SetupNetworkResult,
   { StartTime, CloseTime, BaseTime }: ClientComponents
 ) {
   const upgradeLevelFarm = async (id: PromiseOrValue<BytesLike>) => {

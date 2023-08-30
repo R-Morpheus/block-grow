@@ -8,21 +8,19 @@ import { getUniqueEntity } from "@latticexyz/world/src/modules/uniqueentity/getU
 import { addressToEntityKey } from "../addressToEntityKey.sol";
 
 contract SpawnSystem is System {
+  function spawn(address owner) public {
+    bytes32[] memory farms;
 
-  function spawn() public {
-    bytes32 owner = addressToEntityKey(_msgSender());
-    PlayerEntity.set(owner, true);
+    bytes32 ownerEntity = addressToEntityKey(owner);
+    PlayerEntity.set(ownerEntity, true);
 
-    bytes32 farmEntity = LibMiningFarm.entityFarm(owner);
-//    bytes32 farmEntity = getUniqueEntity();
-//    MiningEquipment.set(owner, farmEntity);
-
-//    string memory tokenName = "ETH";
-//    bytes32 tokenEntity = getUniqueEntity();
-//    Token.set(owner, tokenName, tokenEntity);
+    bytes32 farmEntity = FarmEntity.getUnique();
+    MiningEquipment.set(ownerEntity, farmEntity);
 
     MiningLevel.set(farmEntity, 1);
 
-    MiningFarms.push(owner, farmEntity);
+    MiningFarms.set(ownerEntity, farms);
+
+    MiningFarms.push(ownerEntity, farmEntity);
   }
 }
