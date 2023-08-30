@@ -9,7 +9,7 @@ import { addressToEntityKey } from "../addressToEntityKey.sol";
 
 contract SpawnSystem is System {
 
-  function spawn() public returns (bytes32 owner) {
+  function spawn() public {
     bytes32 owner = addressToEntityKey(_msgSender());
     PlayerEntity.set(owner, true);
 
@@ -24,6 +24,5 @@ contract SpawnSystem is System {
     MiningLevel.set(farmEntity, 1);
 
     MiningFarms.push(owner, farmEntity);
-    return owner;
   }
 }

@@ -7,16 +7,9 @@
     <list default="true" id="0b0084e5-064a-4d75-ba9a-e903c80cef89" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/components/MiningFarm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/components/MiningFarm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/mud/createClientComponents.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/mud/createClientComponents.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/mud/createSystemCalls.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/mud/createSystemCalls.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/mud.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/mud.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/script/PostDeploy.s.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/script/PostDeploy.s.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/src/balance/LibBalance.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/balance/LibBalance.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/tables/Balance.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/tables/Balance.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/ISpawnSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/world/ISpawnSystem.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/src/systems/MiningWorkSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/systems/MiningWorkSystem.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/src/systems/SpawnSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/systems/SpawnSystem.sol" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,24 +31,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/rashid/Desktop/block-grow/packages/contracts/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/rashid/Desktop/block-grow/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/rashid/Desktop/block-grow/packages/contracts/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/rashid/Desktop/block-grow/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
