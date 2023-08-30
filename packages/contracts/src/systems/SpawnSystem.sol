@@ -14,7 +14,7 @@ contract SpawnSystem is System {
     bytes32 ownerEntity = addressToEntityKey(owner);
     PlayerEntity.set(ownerEntity, true);
 
-    bytes32 farmEntity = FarmEntity.getUnique();
+    bytes32 farmEntity = getUniqueEntity();
     MiningEquipment.set(ownerEntity, farmEntity);
 
     MiningLevel.set(farmEntity, 1);
