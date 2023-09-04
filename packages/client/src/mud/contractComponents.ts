@@ -160,8 +160,8 @@ export function defineContractComponents(world: World) {
       return defineComponent(
         world,
         {
-          name: RecsType.String,
           tokenEntity: RecsType.String,
+          name: RecsType.String,
         },
         {
           metadata: {

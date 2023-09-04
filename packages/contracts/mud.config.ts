@@ -63,8 +63,8 @@ export default mudConfig({
     Token: {
       ...entityKey,
       schema: {
-        name: 'string',
         tokenEntity: EntityId,
+        name: 'string',
       }
     },
 
