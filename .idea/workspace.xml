@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b0084e5-064a-4d75-ba9a-e903c80cef89" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/packages/contracts/src/init/LibInitPlayer.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/mud/contractComponents.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/mud/contractComponents.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/mud.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/mud.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/script/PostDeploy.s.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/script/PostDeploy.s.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/balance/LibBalance.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/balance/LibBalance.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/Tables.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/Tables.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/tables/Balance.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/tables/Balance.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/tables/MiningWork.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/tables/MiningWork.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/tables/Token.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/tables/Token.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/ISpawnSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/world/ISpawnSystem.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IMiningWorkSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/codegen/world/IMiningWorkSystem.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/init/LibInitPlayer.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/systems/MiningWorkSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/systems/MiningWorkSystem.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/contracts/src/systems/SpawnSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/systems/SpawnSystem.sol" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,12 +24,17 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GOROOT" url="file:///usr/local/opt/go/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;7700ffff&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2T9pT1mnYUwQaiq8QA0vbiwOoOv" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -33,29 +43,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/rashid/Desktop/block-grow/packages/contracts/src&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/rashid/Desktop/block-grow/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "tables",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/rashid/Desktop/block-grow",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "/Users/rashid/Desktop/block-grow/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
         <entry key="com.haulmont.rcb.reactComponents" value="false" />
         <entry key="com.haulmont.rcb.reactInspector" value="false" />
+        <entry key="com.haulmont.rcb.storybook" value="false" />
       </map>
     </option>
   </component>
@@ -117,10 +135,14 @@
       <workItem from="1691996239269" duration="170000" />
       <workItem from="1691996440439" duration="5768000" />
       <workItem from="1692092664917" duration="46276000" />
+      <workItem from="1693926754281" duration="55000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>

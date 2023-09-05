@@ -38,8 +38,18 @@ export default mudConfig({
       ...entityKey,
       schema: "bool",
     },
-    Balance:{
+    Portfolio:{
       ...entityKey,
+      schema: {
+        entityPortfolio: EntityId,
+        list: EntityIdArray,
+      },
+    },
+    Balance:{
+      keySchema: {
+        owner: EntityId,
+        portfolio: EntityId,
+      },
       schema: {
         balance: "uint256",
       },
@@ -54,20 +64,25 @@ export default mudConfig({
     },
     MiningWork:{
       ...entityKey,
-      schema: 'bool',
+      schema: {
+        token: EntityId,
+        work: 'bool',
+      }
     },
     MiningFarms:{
       ...entityKey,
       schema: EntityIdSet,
     },
     Token: {
-      ...entityKey,
+      keySchema: {
+        owner: EntityId,
+        token: EntityId,
+      },
       schema: {
-        tokenEntity: EntityId,
+        factor: "uint256",
         name: 'string',
       }
     },
-
   },
   modules: [
     {

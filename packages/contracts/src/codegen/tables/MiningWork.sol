@@ -20,11 +20,17 @@ import { PackedCounter, PackedCounterLib } from "@latticexyz/store/src/PackedCou
 bytes32 constant _tableId = bytes32(abi.encodePacked(bytes16(""), bytes16("MiningWork")));
 bytes32 constant MiningWorkTableId = _tableId;
 
+struct MiningWorkData {
+  bytes32 token;
+  bool work;
+}
+
 library MiningWork {
   /** Get the table's schema */
   function getSchema() internal pure returns (Schema) {
-    SchemaType[] memory _schema = new SchemaType[](1);
-    _schema[0] = SchemaType.BOOL;
+    SchemaType[] memory _schema = new SchemaType[](2);
+    _schema[0] = SchemaType.BYTES32;
+    _schema[1] = SchemaType.BOOL;
 
     return SchemaLib.encode(_schema);
   }
@@ -38,8 +44,9 @@ library MiningWork {
 
   /** Get the table's metadata */
   function getMetadata() internal pure returns (string memory, string[] memory) {
-    string[] memory _fieldNames = new string[](1);
-    _fieldNames[0] = "value";
+    string[] memory _fieldNames = new string[](2);
+    _fieldNames[0] = "token";
+    _fieldNames[1] = "work";
     return ("MiningWork", _fieldNames);
   }
 
@@ -65,43 +72,132 @@ library MiningWork {
     _store.setMetadata(_tableId, _tableName, _fieldNames);
   }
 
-  /** Get value */
-  function get(bytes32 entity) internal view returns (bool value) {
+  /** Get token */
+  function getToken(bytes32 entity) internal view returns (bytes32 token) {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
     bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 0);
-    return (_toBool(uint8(Bytes.slice1(_blob, 0))));
+    return (Bytes.slice32(_blob, 0));
   }
 
-  /** Get value (using the specified store) */
-  function get(IStore _store, bytes32 entity) internal view returns (bool value) {
+  /** Get token (using the specified store) */
+  function getToken(IStore _store, bytes32 entity) internal view returns (bytes32 token) {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
     bytes memory _blob = _store.getField(_tableId, _keyTuple, 0);
+    return (Bytes.slice32(_blob, 0));
+  }
+
+  /** Set token */
+  function setToken(bytes32 entity, bytes32 token) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    StoreSwitch.setField(_tableId, _keyTuple, 0, abi.encodePacked((token)));
+  }
+
+  /** Set token (using the specified store) */
+  function setToken(IStore _store, bytes32 entity, bytes32 token) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    _store.setField(_tableId, _keyTuple, 0, abi.encodePacked((token)));
+  }
+
+  /** Get work */
+  function getWork(bytes32 entity) internal view returns (bool work) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 1);
     return (_toBool(uint8(Bytes.slice1(_blob, 0))));
   }
 
-  /** Set value */
-  function set(bytes32 entity, bool value) internal {
+  /** Get work (using the specified store) */
+  function getWork(IStore _store, bytes32 entity) internal view returns (bool work) {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    StoreSwitch.setField(_tableId, _keyTuple, 0, abi.encodePacked((value)));
+    bytes memory _blob = _store.getField(_tableId, _keyTuple, 1);
+    return (_toBool(uint8(Bytes.slice1(_blob, 0))));
   }
 
-  /** Set value (using the specified store) */
-  function set(IStore _store, bytes32 entity, bool value) internal {
+  /** Set work */
+  function setWork(bytes32 entity, bool work) internal {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    _store.setField(_tableId, _keyTuple, 0, abi.encodePacked((value)));
+    StoreSwitch.setField(_tableId, _keyTuple, 1, abi.encodePacked((work)));
+  }
+
+  /** Set work (using the specified store) */
+  function setWork(IStore _store, bytes32 entity, bool work) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    _store.setField(_tableId, _keyTuple, 1, abi.encodePacked((work)));
+  }
+
+  /** Get the full data */
+  function get(bytes32 entity) internal view returns (MiningWorkData memory _table) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    bytes memory _blob = StoreSwitch.getRecord(_tableId, _keyTuple, getSchema());
+    return decode(_blob);
+  }
+
+  /** Get the full data (using the specified store) */
+  function get(IStore _store, bytes32 entity) internal view returns (MiningWorkData memory _table) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    bytes memory _blob = _store.getRecord(_tableId, _keyTuple, getSchema());
+    return decode(_blob);
+  }
+
+  /** Set the full data using individual values */
+  function set(bytes32 entity, bytes32 token, bool work) internal {
+    bytes memory _data = encode(token, work);
+
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    StoreSwitch.setRecord(_tableId, _keyTuple, _data);
+  }
+
+  /** Set the full data using individual values (using the specified store) */
+  function set(IStore _store, bytes32 entity, bytes32 token, bool work) internal {
+    bytes memory _data = encode(token, work);
+
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    _store.setRecord(_tableId, _keyTuple, _data);
+  }
+
+  /** Set the full data using the data struct */
+  function set(bytes32 entity, MiningWorkData memory _table) internal {
+    set(entity, _table.token, _table.work);
+  }
+
+  /** Set the full data using the data struct (using the specified store) */
+  function set(IStore _store, bytes32 entity, MiningWorkData memory _table) internal {
+    set(_store, entity, _table.token, _table.work);
+  }
+
+  /** Decode the tightly packed blob using this table's schema */
+  function decode(bytes memory _blob) internal pure returns (MiningWorkData memory _table) {
+    _table.token = (Bytes.slice32(_blob, 0));
+
+    _table.work = (_toBool(uint8(Bytes.slice1(_blob, 32))));
   }
 
   /** Tightly pack full data using this table's schema */
-  function encode(bool value) internal pure returns (bytes memory) {
-    return abi.encodePacked(value);
+  function encode(bytes32 token, bool work) internal pure returns (bytes memory) {
+    return abi.encodePacked(token, work);
   }
 
   /** Encode keys as a bytes32 array using this table's schema */

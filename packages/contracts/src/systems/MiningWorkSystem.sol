@@ -17,9 +17,9 @@ contract MiningWorkSystem is System {
     LibMiningFarm.upgradeFarm(farmEntity, level + 1);
   }
 
-  function startFarm(bytes32 playerEntity) public {
+  function startFarm(bytes32 playerEntity, bytes32 tokenEntity) public {
     bytes32 farmEntity = MiningEquipment.get(playerEntity);
-    LibMiningFarm.startFarm(farmEntity);
+    LibMiningFarm.startFarm(farmEntity, tokenEntity);
   }
 
   function finishFarm(bytes32 playerEntity) public{

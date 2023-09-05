@@ -80,6 +80,22 @@ export function defineContractComponents(world: World) {
         }
       );
     })(),
+    Portfolio: (() => {
+      const tableId = new TableId("", "Portfolio");
+      return defineComponent(
+        world,
+        {
+          entityPortfolio: RecsType.String,
+          list: RecsType.StringArray,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
     Balance: (() => {
       const tableId = new TableId("", "Balance");
       return defineComponent(
@@ -130,7 +146,8 @@ export function defineContractComponents(world: World) {
       return defineComponent(
         world,
         {
-          value: RecsType.Boolean,
+          token: RecsType.String,
+          work: RecsType.Boolean,
         },
         {
           metadata: {
@@ -160,7 +177,7 @@ export function defineContractComponents(world: World) {
       return defineComponent(
         world,
         {
-          tokenEntity: RecsType.String,
+          factor: RecsType.BigInt,
           name: RecsType.String,
         },
         {

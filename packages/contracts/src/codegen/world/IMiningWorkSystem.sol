@@ -6,7 +6,7 @@ pragma solidity >=0.8.0;
 interface IMiningWorkSystem {
   function upgradeLevelFarm(bytes32 playerEntity) external;
 
-  function startFarm(bytes32 playerEntity) external;
+  function startFarm(bytes32 playerEntity, bytes32 tokenEntity) external;
 
   function finishFarm(bytes32 playerEntity) external;
 }
