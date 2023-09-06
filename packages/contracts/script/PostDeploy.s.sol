@@ -19,7 +19,8 @@ contract PostDeploy is Script {
     uint32 newValue = IWorld(worldAddress).increment();
     console.log("Increment via IWorld:", newValue);
 
-    IWorld(worldAddress).increment();
+    string memory message = IWorld(worldAddress).spawn();
+    console.log(message);
 
     vm.stopBroadcast();
   }

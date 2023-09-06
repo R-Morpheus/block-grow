@@ -27,18 +27,18 @@ library LibBalance {
     uint8 level = MiningLevel.get(farmEntity);
     uint256 baseTime = BaseTime.get(farmEntity);
     uint256 balance = Balance.get(playerEntity, portfolioEntity);
-    uint256 tokenBalance = Token.getBalance(playerEntity, tokenEntity);
+    uint256 tokenBalance = Token.getFactor(playerEntity, tokenEntity);
 
     uint256 newBalance = (baseTime * level) + balance;
 
     Balance.set(playerEntity, portfolioEntity , newBalance);
   }
 
-  function __sumOfTokens(bytes32 playerEntity, bytes32[] tokens) internal  returns(uint256 balance){
+  function __sumOfTokens(bytes32 playerEntity, bytes32[] memory tokens) internal  returns(uint256 balance){
     for (uint256 i; i < tokens.length; i++) {
       bytes32 tokenEntity = Portfolio.getItemList(playerEntity, i);
       // TODO set keyshema to two entity TOKEN_TABLE
-      uint256 tokenBalance = Token.getBalance(playerEntity, tokenEntity);
+      uint256 tokenBalance = Token.getFactor(playerEntity, tokenEntity);
       balance + tokenBalance;
     }
     return balance;

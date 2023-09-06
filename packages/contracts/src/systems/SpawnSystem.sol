@@ -12,7 +12,7 @@ import { addressToEntityKey } from "../addressToEntityKey.sol";
 contract SpawnSystem is System {
 
   function spawn() public returns (string memory) {
-    uint256 day = 86400;
+    uint256 daySec = 31536000;
     bytes32[] memory farms;
     bytes32[] memory tokens;
     bytes32 farmEntity = getUniqueEntity();
@@ -27,8 +27,9 @@ contract SpawnSystem is System {
 
     bytes32 tokenEntity = getUniqueEntity();
     string memory nameToken = "ETH";
-    uint256 memory factor = 0.000625;
-    Token.set(owner, tokenEntity, factor / day, nameToken);
+    uint256 norm = 1620; // $ (~1620$ = 1 ether)
+    uint256 factor = 10**18; // 1 ether
+    Token.set(owner, tokenEntity, factor / 31536000, nameToken);
 
     bytes32 portfolioEntity = getUniqueEntity();
     Portfolio.set(owner, portfolioEntity, tokens);
