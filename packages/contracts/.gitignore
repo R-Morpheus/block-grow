@@ -9,3 +9,4 @@ broadcast/
 .idea/workspace.xml
 # Ignore MUD deploy artifacts
 deploys/**/*.json
+.idea
