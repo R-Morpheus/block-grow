@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0b0084e5-064a-4d75-ba9a-e903c80cef89" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/script/PostDeploy.s.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/script/PostDeploy.s.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/balance/LibBalance.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/balance/LibBalance.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/miningFarm/LibMiningFarm.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/src/systems/SpawnSystem.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/src/systems/SpawnSystem.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/test/LibBalance.t.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/test/LibBalance.t.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/test/LibMiningFarm.t.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/test/LibMiningFarm.t.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/contracts/test/LibTime.t.sol" beforeDir="false" afterPath="$PROJECT_DIR$/packages/contracts/test/LibTime.t.sol" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file:///usr/local/opt/go/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;7700ffff&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2T9pT1mnYUwQaiq8QA0vbiwOoOv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "tables",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/rashid/Desktop/block-grow",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "/Users/rashid/Desktop/block-grow/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+        <entry key="com.haulmont.rcb.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/contracts/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/contracts/src/time" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/contracts/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b0084e5-064a-4d75-ba9a-e903c80cef89" name="Changes" comment="" />
+      <created>1690465162792</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1690465162792</updated>
+      <workItem from="1690465165288" duration="5152000" />
+      <workItem from="1690531352481" duration="8885000" />
+      <workItem from="1690814313207" duration="34000" />
+      <workItem from="1690814397837" duration="196000" />
+      <workItem from="1690906623475" duration="7831000" />
+      <workItem from="1691012946308" duration="260000" />
+      <workItem from="1691013849730" duration="3012000" />
+      <workItem from="1691066764599" duration="8484000" />
+      <workItem from="1691082687725" duration="11355000" />
+      <workItem from="1691687756225" duration="6913000" />
+      <workItem from="1691996071849" duration="129000" />
+      <workItem from="1691996239269" duration="170000" />
+      <workItem from="1691996440439" duration="5768000" />
+      <workItem from="1692092664917" duration="46276000" />
+      <workItem from="1693926754281" duration="55000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>

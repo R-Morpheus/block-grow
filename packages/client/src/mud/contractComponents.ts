@@ -20,5 +20,173 @@ export function defineContractComponents(world: World) {
         }
       );
     })(),
+    StartTime: (() => {
+      const tableId = new TableId("", "StartTime");
+      return defineComponent(
+        world,
+        {
+          value: RecsType.BigInt,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    CloseTime: (() => {
+      const tableId = new TableId("", "CloseTime");
+      return defineComponent(
+        world,
+        {
+          value: RecsType.BigInt,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    BaseTime: (() => {
+      const tableId = new TableId("", "BaseTime");
+      return defineComponent(
+        world,
+        {
+          value: RecsType.BigInt,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    PlayerEntity: (() => {
+      const tableId = new TableId("", "PlayerEntity");
+      return defineComponent(
+        world,
+        {
+          value: RecsType.Boolean,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    Portfolio: (() => {
+      const tableId = new TableId("", "Portfolio");
+      return defineComponent(
+        world,
+        {
+          entityPortfolio: RecsType.String,
+          list: RecsType.StringArray,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    Balance: (() => {
+      const tableId = new TableId("", "Balance");
+      return defineComponent(
+        world,
+        {
+          balance: RecsType.BigInt,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    MiningEquipment: (() => {
+      const tableId = new TableId("", "MiningEquipment");
+      return defineComponent(
+        world,
+        {
+          value: RecsType.String,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    MiningLevel: (() => {
+      const tableId = new TableId("", "MiningLevel");
+      return defineComponent(
+        world,
+        {
+          value: RecsType.Number,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    MiningWork: (() => {
+      const tableId = new TableId("", "MiningWork");
+      return defineComponent(
+        world,
+        {
+          token: RecsType.String,
+          work: RecsType.Boolean,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    MiningFarms: (() => {
+      const tableId = new TableId("", "MiningFarms");
+      return defineComponent(
+        world,
+        {
+          value: RecsType.StringArray,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    Token: (() => {
+      const tableId = new TableId("", "Token");
+      return defineComponent(
+        world,
+        {
+          factor: RecsType.BigInt,
+          name: RecsType.String,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHex(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
   };
 }
