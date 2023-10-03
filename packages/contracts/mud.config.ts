@@ -42,6 +42,7 @@ export default mudConfig({
       ...entityKey,
       schema: {
         entityPortfolio: EntityId,
+        selectedToken: EntityId,
         list: EntityIdArray,
       },
     },
