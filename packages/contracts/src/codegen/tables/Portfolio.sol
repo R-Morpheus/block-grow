@@ -22,15 +22,17 @@ bytes32 constant PortfolioTableId = _tableId;
 
 struct PortfolioData {
   bytes32 entityPortfolio;
+  bytes32 selectedToken;
   bytes32[] list;
 }
 
 library Portfolio {
   /** Get the table's schema */
   function getSchema() internal pure returns (Schema) {
-    SchemaType[] memory _schema = new SchemaType[](2);
+    SchemaType[] memory _schema = new SchemaType[](3);
     _schema[0] = SchemaType.BYTES32;
-    _schema[1] = SchemaType.BYTES32_ARRAY;
+    _schema[1] = SchemaType.BYTES32;
+    _schema[2] = SchemaType.BYTES32_ARRAY;
 
     return SchemaLib.encode(_schema);
   }
@@ -44,9 +46,10 @@ library Portfolio {
 
   /** Get the table's metadata */
   function getMetadata() internal pure returns (string memory, string[] memory) {
-    string[] memory _fieldNames = new string[](2);
+    string[] memory _fieldNames = new string[](3);
     _fieldNames[0] = "entityPortfolio";
-    _fieldNames[1] = "list";
+    _fieldNames[1] = "selectedToken";
+    _fieldNames[2] = "list";
     return ("Portfolio", _fieldNames);
   }
 
@@ -106,12 +109,46 @@ library Portfolio {
     _store.setField(_tableId, _keyTuple, 0, abi.encodePacked((entityPortfolio)));
   }
 
+  /** Get selectedToken */
+  function getSelectedToken(bytes32 entity) internal view returns (bytes32 selectedToken) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 1);
+    return (Bytes.slice32(_blob, 0));
+  }
+
+  /** Get selectedToken (using the specified store) */
+  function getSelectedToken(IStore _store, bytes32 entity) internal view returns (bytes32 selectedToken) {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    bytes memory _blob = _store.getField(_tableId, _keyTuple, 1);
+    return (Bytes.slice32(_blob, 0));
+  }
+
+  /** Set selectedToken */
+  function setSelectedToken(bytes32 entity, bytes32 selectedToken) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    StoreSwitch.setField(_tableId, _keyTuple, 1, abi.encodePacked((selectedToken)));
+  }
+
+  /** Set selectedToken (using the specified store) */
+  function setSelectedToken(IStore _store, bytes32 entity, bytes32 selectedToken) internal {
+    bytes32[] memory _keyTuple = new bytes32[](1);
+    _keyTuple[0] = entity;
+
+    _store.setField(_tableId, _keyTuple, 1, abi.encodePacked((selectedToken)));
+  }
+
   /** Get list */
   function getList(bytes32 entity) internal view returns (bytes32[] memory list) {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 1);
+    bytes memory _blob = StoreSwitch.getField(_tableId, _keyTuple, 2);
     return (SliceLib.getSubslice(_blob, 0, _blob.length).decodeArray_bytes32());
   }
 
@@ -120,7 +157,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    bytes memory _blob = _store.getField(_tableId, _keyTuple, 1);
+    bytes memory _blob = _store.getField(_tableId, _keyTuple, 2);
     return (SliceLib.getSubslice(_blob, 0, _blob.length).decodeArray_bytes32());
   }
 
@@ -129,7 +166,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    StoreSwitch.setField(_tableId, _keyTuple, 1, EncodeArray.encode((list)));
+    StoreSwitch.setField(_tableId, _keyTuple, 2, EncodeArray.encode((list)));
   }
 
   /** Set list (using the specified store) */
@@ -137,7 +174,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    _store.setField(_tableId, _keyTuple, 1, EncodeArray.encode((list)));
+    _store.setField(_tableId, _keyTuple, 2, EncodeArray.encode((list)));
   }
 
   /** Get the length of list */
@@ -145,7 +182,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    uint256 _byteLength = StoreSwitch.getFieldLength(_tableId, _keyTuple, 1, getSchema());
+    uint256 _byteLength = StoreSwitch.getFieldLength(_tableId, _keyTuple, 2, getSchema());
     return _byteLength / 32;
   }
 
@@ -154,7 +191,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    uint256 _byteLength = _store.getFieldLength(_tableId, _keyTuple, 1, getSchema());
+    uint256 _byteLength = _store.getFieldLength(_tableId, _keyTuple, 2, getSchema());
     return _byteLength / 32;
   }
 
@@ -163,7 +200,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    bytes memory _blob = StoreSwitch.getFieldSlice(_tableId, _keyTuple, 1, getSchema(), _index * 32, (_index + 1) * 32);
+    bytes memory _blob = StoreSwitch.getFieldSlice(_tableId, _keyTuple, 2, getSchema(), _index * 32, (_index + 1) * 32);
     return (Bytes.slice32(_blob, 0));
   }
 
@@ -172,7 +209,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    bytes memory _blob = _store.getFieldSlice(_tableId, _keyTuple, 1, getSchema(), _index * 32, (_index + 1) * 32);
+    bytes memory _blob = _store.getFieldSlice(_tableId, _keyTuple, 2, getSchema(), _index * 32, (_index + 1) * 32);
     return (Bytes.slice32(_blob, 0));
   }
 
@@ -181,7 +218,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    StoreSwitch.pushToField(_tableId, _keyTuple, 1, abi.encodePacked((_element)));
+    StoreSwitch.pushToField(_tableId, _keyTuple, 2, abi.encodePacked((_element)));
   }
 
   /** Push an element to list (using the specified store) */
@@ -189,7 +226,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    _store.pushToField(_tableId, _keyTuple, 1, abi.encodePacked((_element)));
+    _store.pushToField(_tableId, _keyTuple, 2, abi.encodePacked((_element)));
   }
 
   /** Pop an element from list */
@@ -197,7 +234,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    StoreSwitch.popFromField(_tableId, _keyTuple, 1, 32);
+    StoreSwitch.popFromField(_tableId, _keyTuple, 2, 32);
   }
 
   /** Pop an element from list (using the specified store) */
@@ -205,7 +242,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    _store.popFromField(_tableId, _keyTuple, 1, 32);
+    _store.popFromField(_tableId, _keyTuple, 2, 32);
   }
 
   /** Update an element of list at `_index` */
@@ -213,7 +250,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    StoreSwitch.updateInField(_tableId, _keyTuple, 1, _index * 32, abi.encodePacked((_element)));
+    StoreSwitch.updateInField(_tableId, _keyTuple, 2, _index * 32, abi.encodePacked((_element)));
   }
 
   /** Update an element of list (using the specified store) at `_index` */
@@ -221,7 +258,7 @@ library Portfolio {
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
 
-    _store.updateInField(_tableId, _keyTuple, 1, _index * 32, abi.encodePacked((_element)));
+    _store.updateInField(_tableId, _keyTuple, 2, _index * 32, abi.encodePacked((_element)));
   }
 
   /** Get the full data */
@@ -243,8 +280,8 @@ library Portfolio {
   }
 
   /** Set the full data using individual values */
-  function set(bytes32 entity, bytes32 entityPortfolio, bytes32[] memory list) internal {
-    bytes memory _data = encode(entityPortfolio, list);
+  function set(bytes32 entity, bytes32 entityPortfolio, bytes32 selectedToken, bytes32[] memory list) internal {
+    bytes memory _data = encode(entityPortfolio, selectedToken, list);
 
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
@@ -253,8 +290,14 @@ library Portfolio {
   }
 
   /** Set the full data using individual values (using the specified store) */
-  function set(IStore _store, bytes32 entity, bytes32 entityPortfolio, bytes32[] memory list) internal {
-    bytes memory _data = encode(entityPortfolio, list);
+  function set(
+    IStore _store,
+    bytes32 entity,
+    bytes32 entityPortfolio,
+    bytes32 selectedToken,
+    bytes32[] memory list
+  ) internal {
+    bytes memory _data = encode(entityPortfolio, selectedToken, list);
 
     bytes32[] memory _keyTuple = new bytes32[](1);
     _keyTuple[0] = entity;
@@ -264,26 +307,28 @@ library Portfolio {
 
   /** Set the full data using the data struct */
   function set(bytes32 entity, PortfolioData memory _table) internal {
-    set(entity, _table.entityPortfolio, _table.list);
+    set(entity, _table.entityPortfolio, _table.selectedToken, _table.list);
   }
 
   /** Set the full data using the data struct (using the specified store) */
   function set(IStore _store, bytes32 entity, PortfolioData memory _table) internal {
-    set(_store, entity, _table.entityPortfolio, _table.list);
+    set(_store, entity, _table.entityPortfolio, _table.selectedToken, _table.list);
   }
 
   /** Decode the tightly packed blob using this table's schema */
   function decode(bytes memory _blob) internal pure returns (PortfolioData memory _table) {
-    // 32 is the total byte length of static data
-    PackedCounter _encodedLengths = PackedCounter.wrap(Bytes.slice32(_blob, 32));
+    // 64 is the total byte length of static data
+    PackedCounter _encodedLengths = PackedCounter.wrap(Bytes.slice32(_blob, 64));
 
     _table.entityPortfolio = (Bytes.slice32(_blob, 0));
 
+    _table.selectedToken = (Bytes.slice32(_blob, 32));
+
     // Store trims the blob if dynamic fields are all empty
-    if (_blob.length > 32) {
+    if (_blob.length > 64) {
       uint256 _start;
       // skip static data length + dynamic lengths word
-      uint256 _end = 64;
+      uint256 _end = 96;
 
       _start = _end;
       _end += _encodedLengths.atIndex(0);
@@ -292,12 +337,16 @@ library Portfolio {
   }
 
   /** Tightly pack full data using this table's schema */
-  function encode(bytes32 entityPortfolio, bytes32[] memory list) internal pure returns (bytes memory) {
+  function encode(
+    bytes32 entityPortfolio,
+    bytes32 selectedToken,
+    bytes32[] memory list
+  ) internal pure returns (bytes memory) {
     uint40[] memory _counters = new uint40[](1);
     _counters[0] = uint40(list.length * 32);
     PackedCounter _encodedLengths = PackedCounterLib.pack(_counters);
 
-    return abi.encodePacked(entityPortfolio, _encodedLengths.unwrap(), EncodeArray.encode((list)));
+    return abi.encodePacked(entityPortfolio, selectedToken, _encodedLengths.unwrap(), EncodeArray.encode((list)));
   }
 
   /** Encode keys as a bytes32 array using this table's schema */

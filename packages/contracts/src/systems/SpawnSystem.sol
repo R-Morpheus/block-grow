@@ -25,14 +25,16 @@ contract SpawnSystem is System {
     MiningFarms.set(owner, farms);
     MiningFarms.push(owner, farmEntity);
 
+    // spawn token
     bytes32 tokenEntity = getUniqueEntity();
     string memory nameToken = "ETH";
     uint256 norm = 1620; // $ (~1620$ = 1 ether)
     uint256 factor = 10**18; // 1 ether
     Token.set(owner, tokenEntity, factor / 31536000, nameToken);
 
+    // spawn portfolio
     bytes32 portfolioEntity = getUniqueEntity();
-    Portfolio.set(owner, portfolioEntity, tokens);
+    Portfolio.set(owner, portfolioEntity, tokenEntity, tokens);
     // TODO change system to any portfolios
     Portfolio.pushList(owner, tokenEntity);
 
